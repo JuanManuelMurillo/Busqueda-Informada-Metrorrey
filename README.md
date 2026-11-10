@@ -165,6 +165,40 @@ curl http://localhost:8080/api/health
 
 ## Cliente (React)
 
+### Estructura (MVVM)
+
+El cliente sigue una arquitectura **MVVM** (Model–View–ViewModel) sencilla:
+
+```
+client/src/
+├── models/                     # Model: entidades y reglas de negocio (sin React)
+│   └── HealthStatus.js
+├── services/                   # Model: acceso a la API
+│   ├── apiClient.js            # Cliente HTTP base (usa API_URL)
+│   └── healthService.js        # GET /api/health → HealthStatus
+├── viewmodels/                 # ViewModel: hooks con el estado y las acciones de cada vista
+│   └── useHealthViewModel.js
+├── views/                      # View: componentes de presentación
+│   ├── HomeView.js
+│   └── HomeView.css
+├── config.js                   # API_URL a partir de client/.env
+├── App.js                      # Composición de vistas
+└── index.js                    # Punto de entrada
+```
+
+Flujo de dependencias: **View → ViewModel → Service → Model**. Cada capa solo conoce a la siguiente:
+
+- **Model** (`models/`, `services/`): datos y comunicación con la API. No importa nada de React.
+- **ViewModel** (`viewmodels/`): un hook `useXxxViewModel` por vista. Llama a los servicios, guarda el estado (datos, carga, errores) y expone datos ya preparados para pintar y acciones.
+- **View** (`views/`): solo presentación. Obtiene todo del ViewModel y nunca llama a la API directamente.
+
+Para añadir una funcionalidad (por ejemplo, el cálculo de rutas):
+
+1. Crear el modelo en `models/` (p. ej. `Route.js`).
+2. Crear el servicio en `services/` (p. ej. `routeService.js`) usando `get` de `apiClient.js`.
+3. Crear el ViewModel en `viewmodels/` (p. ej. `useRouteViewModel.js`).
+4. Crear la vista en `views/` (p. ej. `RouteView.js`) y añadirla en `App.js`.
+
 ### Instalación
 
 ```bash
@@ -189,12 +223,13 @@ El cliente arranca en `http://localhost:3000`. La configuración se lee de `clie
 | `REACT_APP_API_HOST` | `localhost` | Host de la API Flask                                   |
 | `REACT_APP_API_PORT` | `8080`      | Puerto de la API Flask (debe coincidir con `API/.env`) |
 
-En el código, la URL de la API se importa desde `src/config.js`:
+La URL de la API se construye en `src/config.js` y solo la usa `services/apiClient.js`; el resto de servicios llaman a `get('/ruta')`.
 
-```js
-import { API_URL } from './config';
+### Tests
 
-fetch(`${API_URL}/health`);
+```bash
+cd client
+npm test
 ```
 
 > Tras cambiar `client/.env` hay que reiniciar `npm start` para que se apliquen los cambios.
