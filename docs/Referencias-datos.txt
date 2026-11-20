@@ -1,0 +1,19 @@
+REFERENCIAS DE LOS DATOS DEL METRO (API/app/data/metro.json)
+==============================================================
+
+1. Coordenadas de las estaciones (campos "lat" y "lon")
+   OpenStreetMap.
+   https://www.openstreetmap.org/#map=6/40.01/-2.49
+
+2. Longitud de los tramos (campo "segments" -> "km")
+   Longitud por la vía entre estaciones consecutivas, medida con OpenStreetMap.
+   https://www.openstreetmap.org/#map=6/40.01/-2.49
+
+   Relaciones de ruta de OpenStreetMap:
+   - Línea 1: https://www.openstreetmap.org/relation/7890222
+              https://www.openstreetmap.org/relation/7890221
+   - Línea 2: https://www.openstreetmap.org/relation/3403903
+              https://www.openstreetmap.org/relation/7890220
+   - Línea 3: https://www.openstreetmap.org/relation/12380644
+              https://www.openstreetmap.org/relation/12380647
+

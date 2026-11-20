@@ -2,19 +2,9 @@ import json
 from itertools import permutations
 from pathlib import Path
 
+from app.search.cost import segment_cost as track_cost
+
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "metro.json"
-
-# Peso de cambiar de línea en una estación de transbordo
-TRANSFER_COST = 1
-
-
-# Costes provisionales (1) para probar la estructura del grafo.
-def default_segment_cost(a, b):
-    return 1
-
-
-def default_transfer_cost(station):
-    return TRANSFER_COST
 
 
 # Carga de datos desde el JSON
@@ -25,7 +15,7 @@ def load_data(path=DATA_PATH):
 
 class MetroGraph:
 
-    def __init__(self, data, segment_cost=default_segment_cost, transfer_cost=default_transfer_cost):
+    def __init__(self, data, segment_cost=track_cost):
         # Estaciones y coordenadas por id
         self.stations = {s["id"]: s for s in data["stations"]}
         self.coords = {s["id"]: (s["lat"], s["lon"]) for s in data["stations"]}
@@ -36,24 +26,22 @@ class MetroGraph:
             for line in s["lines"]:
                 self.graph[(s["id"], line)] = []
 
-        # Aristas entre estaciones consecutivas de cada línea (en ambos sentidos)
+        # Aristas entre estaciones consecutivas de cada línea (en ambos sentidos),
+        # con la longitud por la vía de cada tramo
         for line in data["lines"]:
-            ids = line["stations"]
-            for a, b in zip(ids, ids[1:]):
-                cost = segment_cost(a, b)
+            for segment in line["segments"]:
+                a, b = segment["from"], segment["to"]
+                cost = segment_cost(segment, self.coords)
                 self.graph[(a, line["id"])].append(((b, line["id"]), cost))
                 self.graph[(b, line["id"])].append(((a, line["id"]), cost))
 
-        # Aristas de transbordo entre líneas de la misma estación
+        # Aristas de transbordo entre líneas de la misma estación.
+        # Coste 0: cambiar de línea no penaliza, solo conecta los andenes
         for t in data["transfers"]:
             # Pares ordenados de líneas: (L1, L2) y (L2, L1), un sentido cada uno
             for from_line, to_line in permutations(t["lines"], 2):
                 # Andén de origen -> andén de la otra línea, en la misma estación
-                self.graph[(t["station"], from_line)].append(
-                    # Vecino: misma estación en la nueva línea
-                    # coste: el del transbordo
-                    ((t["station"], to_line), transfer_cost(t["station"]))
-                )
+                self.graph[(t["station"], from_line)].append(((t["station"], to_line), 0))
 
     @classmethod
     def from_json(cls, path=DATA_PATH, **costs):
