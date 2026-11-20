@@ -1,0 +1,79 @@
+{
+  "lines": [
+    {
+      "id": "L1",
+      "name": "Línea 1",
+      "stations": [
+        "talleres", "san-bernabe", "unidad-modelo", "aztlan", "penitenciaria",
+        "alfonso-reyes", "mitras", "simon-bolivar", "hospital", "edison", "central",
+        "cuauhtemoc", "del-golfo", "felix-u-gomez", "parque-fundidora", "y-griega",
+        "eloy-cavazos", "lerdo-de-tejada", "exposicion"
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "Línea 2",
+      "stations": [
+        "sendero", "santiago-tapia", "san-nicolas", "anahuac", "universidad",
+        "ninos-heroes", "regina", "general-anaya", "cuauhtemoc", "alameda",
+        "fundadores", "padre-mier", "general-zaragoza"
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "Línea 3",
+      "stations": [
+        "hospital-metropolitano", "los-angeles", "ruiz-cortines", "colonia-moderna",
+        "metalurgicos", "felix-u-gomez", "colonia-obrera", "santa-lucia",
+        "general-zaragoza"
+      ]
+    }
+  ],
+  "transfers": [
+    { "station": "cuauhtemoc", "lines": ["L1", "L2"] },
+    { "station": "general-zaragoza", "lines": ["L2", "L3"] },
+    { "station": "felix-u-gomez", "lines": ["L1", "L3"] }
+  ],
+  "stations": [
+    { "id": "talleres", "name": "Talleres", "lines": ["L1"], "lat": 25.753889, "lon": -100.365278 },
+    { "id": "san-bernabe", "name": "San Bernabé", "lines": ["L1"], "lat": 25.748333, "lon": -100.361667 },
+    { "id": "unidad-modelo", "name": "Unidad Modelo", "lines": ["L1"], "lat": 25.741944, "lon": -100.355 },
+    { "id": "aztlan", "name": "Aztlán", "lines": ["L1"], "lat": 25.732222, "lon": -100.3475 },
+    { "id": "penitenciaria", "name": "Penitenciaría", "lines": ["L1"], "lat": 25.723333, "lon": -100.3425 },
+    { "id": "alfonso-reyes", "name": "Alfonso Reyes", "lines": ["L1"], "lat": 25.716111, "lon": -100.3425 },
+    { "id": "mitras", "name": "Mitras", "lines": ["L1"], "lat": 25.705556, "lon": -100.3425 },
+    { "id": "simon-bolivar", "name": "Simón Bolívar", "lines": ["L1"], "lat": 25.69904, "lon": -100.34324 },
+    { "id": "hospital", "name": "Hospital", "lines": ["L1"], "lat": 25.691944, "lon": -100.344167 },
+    { "id": "edison", "name": "Edison", "lines": ["L1"], "lat": 25.686944, "lon": -100.333611 },
+    { "id": "central", "name": "Central", "lines": ["L1"], "lat": 25.686944, "lon": -100.324444 },
+    { "id": "cuauhtemoc", "name": "Cuauhtémoc", "lines": ["L1", "L2"], "lat": 25.686111, "lon": -100.316944 },
+    { "id": "del-golfo", "name": "Del Golfo", "lines": ["L1"], "lat": 25.68512, "lon": -100.30663 },
+    { "id": "felix-u-gomez", "name": "Félix U. Gómez", "lines": ["L1", "L3"], "lat": 25.683889, "lon": -100.296667 },
+    { "id": "parque-fundidora", "name": "Parque Fundidora", "lines": ["L1"], "lat": 25.683611, "lon": -100.288056 },
+    { "id": "y-griega", "name": "Y Griega", "lines": ["L1"], "lat": 25.683333, "lon": -100.279444 },
+    { "id": "eloy-cavazos", "name": "Eloy Cavazos", "lines": ["L1"], "lat": 25.68, "lon": -100.264167 },
+    { "id": "lerdo-de-tejada", "name": "Lerdo de Tejada", "lines": ["L1"], "lat": 25.679722, "lon": -100.252778 },
+    { "id": "exposicion", "name": "Exposición", "lines": ["L1"], "lat": 25.679444, "lon": -100.245556 },
+
+    { "id": "sendero", "name": "Sendero", "lines": ["L2"], "lat": 25.768611, "lon": -100.292778 },
+    { "id": "santiago-tapia", "name": "Santiago Tapia", "lines": ["L2"], "lat": 25.759444, "lon": -100.295556 },
+    { "id": "san-nicolas", "name": "San Nicolás", "lines": ["L2"], "lat": 25.7525, "lon": -100.298056 },
+    { "id": "anahuac", "name": "Anáhuac", "lines": ["L2"], "lat": 25.740278, "lon": -100.3025 },
+    { "id": "universidad", "name": "Universidad", "lines": ["L2"], "lat": 25.724444, "lon": -100.308333 },
+    { "id": "ninos-heroes", "name": "Niños Héroes", "lines": ["L2"], "lat": 25.717222, "lon": -100.311111 },
+    { "id": "regina", "name": "Regina", "lines": ["L2"], "lat": 25.7079, "lon": -100.3141 },
+    { "id": "general-anaya", "name": "General Anaya", "lines": ["L2"], "lat": 25.696944, "lon": -100.316667 },
+    { "id": "alameda", "name": "Alameda", "lines": ["L2"], "lat": 25.676944, "lon": -100.318333 },
+    { "id": "fundadores", "name": "Fundadores", "lines": ["L2"], "lat": 25.67222, "lon": -100.31876 },
+    { "id": "padre-mier", "name": "Padre Mier", "lines": ["L2"], "lat": 25.66888, "lon": -100.31544 },
+    { "id": "general-zaragoza", "name": "General I. Zaragoza", "lines": ["L2", "L3"], "lat": 25.667778, "lon": -100.310278 },
+
+    { "id": "hospital-metropolitano", "name": "Hospital Metropolitano", "lines": ["L3"], "lat": 25.71376, "lon": -100.27359 },
+    { "id": "los-angeles", "name": "Los Ángeles", "lines": ["L3"], "lat": 25.70812, "lon": -100.28171 },
+    { "id": "ruiz-cortines", "name": "Ruiz Cortines", "lines": ["L3"], "lat": 25.70375, "lon": -100.28796 },
+    { "id": "colonia-moderna", "name": "Colonia Moderna", "lines": ["L3"], "lat": 25.70046, "lon": -100.2926 },
+    { "id": "metalurgicos", "name": "Metalúrgicos", "lines": ["L3"], "lat": 25.68996, "lon": -100.29598 },
+    { "id": "colonia-obrera", "name": "Colonia Obrera", "lines": ["L3"], "lat": 25.678353, "lon": -100.297603 },
+    { "id": "santa-lucia", "name": "Santa Lucía", "lines": ["L3"], "lat": 25.6714, "lon": -100.29855 }
+  ]
+}
