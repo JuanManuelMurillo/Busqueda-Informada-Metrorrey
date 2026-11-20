@@ -1,0 +1,10 @@
+.page-title {
+  margin: 0;
+  padding-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-navy-500);
+  border-bottom: 0.125rem solid var(--color-red-500);
+}

@@ -1,0 +1,124 @@
+.route-stations {
+  padding: 1rem 1.25rem;
+  background-color: var(--color-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.5rem;
+}
+
+.route-stations__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-bottom: 1rem;
+}
+
+.route-stations__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.route-stations__summary {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.route-stations__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route-stations__stop {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.route-stations__stop:last-child {
+  padding-bottom: 0;
+}
+
+.route-stations__stop::after {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  bottom: -0.25rem;
+  left: 0.5rem;
+  width: 0.25rem;
+  transform: translateX(-50%);
+  background-color: var(--segment-color);
+}
+
+.route-stations__stop:last-child::after {
+  display: none;
+}
+
+.route-stations__marker {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.125rem;
+  box-sizing: border-box;
+  border: 0.1875rem solid var(--marker-color);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--transfer-color) 0 45%, var(--color-surface) 46%);
+}
+
+.route-stations__stop--end .route-stations__marker {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0;
+  margin-left: -0.125rem;
+  margin-right: -0.125rem;
+  border-width: 0.25rem;
+}
+
+.route-stations__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.route-stations__name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.route-stations__stop:not(.route-stations__stop--end) .route-stations__name {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.route-stations__tag {
+  padding: 0.0625rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: var(--color-primary-subtle);
+  border-radius: 999rem;
+}
+
+.route-stations__note {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.route-stations__note--transfer {
+  font-weight: 600;
+  color: var(--color-accent);
+}

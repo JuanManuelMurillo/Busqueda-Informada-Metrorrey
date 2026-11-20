@@ -1,0 +1,51 @@
+.station-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.station-option__marker {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  box-sizing: border-box;
+  border: 0.1875rem solid var(--station-color);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--transfer-color) 0 45%, var(--color-surface) 46%);
+}
+
+.station-option__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.station-option__name {
+  font-weight: 600;
+  color: var(--color-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.station-option__lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+}
+
+.station-option__line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.station-option__dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+}
