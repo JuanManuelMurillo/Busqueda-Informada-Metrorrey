@@ -1,7 +1,8 @@
-import routeResponse from '../shared/data/route.json';
+import { post } from './apiClient';
 import { Route } from '../models/Route';
 
-// Lectura de un JSON estático para pruebas
-export async function calculateRoute() {
-  return Route.fromJson(routeResponse);
+// Pide al backend la ruta óptima (A*) entre dos estaciones
+export async function calculateRoute(origin, destination) {
+  const data = await post('/route', { origin, destination });
+  return Route.fromJson(data);
 }
