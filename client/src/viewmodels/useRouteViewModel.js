@@ -34,6 +34,7 @@ export function useRouteViewModel() {
 
   return {
     routeStations,
+    distanceKm: route?.distanceKm ?? null,
     isLoading,
     error,
     calculate,

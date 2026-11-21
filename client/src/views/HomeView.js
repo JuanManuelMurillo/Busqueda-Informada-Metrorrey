@@ -4,6 +4,7 @@ import { PageTitle } from '../shared/components/PageTitle';
 import { MetroMap } from '../shared/components/MetroMap';
 import { Button } from '../shared/components/Button';
 import { RouteStations } from '../shared/components/RouteStations';
+import { RouteCost } from '../shared/components/RouteCost';
 import { STATION_OPTIONS, STATIONS } from '../shared/data/stations';
 import { LINES } from '../shared/data/lines';
 import { useRouteViewModel } from '../viewmodels/useRouteViewModel';
@@ -15,7 +16,7 @@ const LINE_LIST = Object.values(LINES);
 export function HomeView() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
-  const { routeStations, isLoading, error, calculate, reset } = useRouteViewModel();
+  const { routeStations, distanceKm, isLoading, error, calculate, reset } = useRouteViewModel();
 
   // Desechar la ruta al cambiar el origen o destino
   const handleOriginChange = (value) => {
@@ -104,6 +105,7 @@ export function HomeView() {
             </p>
           )}
 
+          <RouteCost distanceKm={distanceKm} />
           <RouteStations stations={routeStations} />
         </section>
 

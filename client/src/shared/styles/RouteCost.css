@@ -1,0 +1,17 @@
+.route-cost {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.route-cost__label {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.route-cost__value {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
