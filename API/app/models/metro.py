@@ -47,9 +47,6 @@ class MetroGraph:
     def from_json(cls, path=DATA_PATH, **costs):
         return cls(load_data(path), **costs)
 
-    def has_station(self, station_id):
-        return station_id in self.stations
-
     def neighbors(self, node):
         return self.graph[node]
 

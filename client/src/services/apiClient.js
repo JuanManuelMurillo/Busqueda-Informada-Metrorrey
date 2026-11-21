@@ -10,10 +10,6 @@ async function request(path, options) {
   return response.json();
 }
 
-export function get(path) {
-  return request(path);
-}
-
 export function post(path, body) {
   return request(path, {
     method: 'POST',
