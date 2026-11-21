@@ -1,6 +1,9 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, current_app, jsonify, request
+
+from app.services.route_service import find_route
 
 route_bp = Blueprint("route", __name__)
+
 
 @route_bp.post("/route")
 def calculate_route():
@@ -9,9 +12,12 @@ def calculate_route():
     origin = data.get("origin")
     destination = data.get("destination")
 
-    if not origin or not destination:
-        return jsonify(error="Falta el parámetro 'destino' y/o 'origne'"), 400
+    if not isinstance(origin, str) or not isinstance(destination, str) or not origin or not destination:
+        return jsonify(error="Faltan los parámetros 'origin' y/o 'destination'"), 400
 
-    stations = [origin, destination]
+    # Se construye el grafo del metro al arrancar la aplicación
+    metro = current_app.config["METRO"]
 
-    return jsonify(stations=stations), 200
+    route = find_route(metro, origin, destination)
+
+    return jsonify(route), 200
