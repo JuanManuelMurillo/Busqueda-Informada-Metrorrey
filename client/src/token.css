@@ -1,0 +1,73 @@
+/*
+ * Design tokens — Metrorrey palette
+ *   map background  #ECE7DD
+ *   logo navy ring  #013A73
+ *   logo red "m"    #E40A20
+ *   logo white      #FFFFFF
+ *   lines           L1 #F9B036 · L2 #68B75D · L3 #E9511C
+ */
+
+:root {
+  /* ---- Brand: navy (logo ring, legend headers, station labels) ---- */
+  --color-navy-50: #e6edf5;
+  --color-navy-100: #c9d6e6;
+  --color-navy-300: #4d7bae;
+  --color-navy-400: #1f5590;
+  --color-navy-500: #013a73; /* sampled */
+  --color-navy-600: #012a54;
+  --color-navy-700: #001c38;
+
+  /* ---- Brand: red (logo "m") ---- */
+  --color-red-50: #fde8ea;
+  --color-red-100: #f9c3c8;
+  --color-red-300: #ee5463;
+  --color-red-500: #e40a20; /* sampled */
+  --color-red-600: #bf081b;
+  --color-red-700: #9a0616;
+
+  /* ---- Neutrals: map paper ---- */
+  --color-white: #ffffff; /* sampled */
+  --color-sand-50: #f6f3ee;
+  --color-sand-100: #ece7dd; /* sampled */
+  --color-sand-200: #e0d9cc;
+  --color-sand-300: #d3caba;
+  --color-sand-500: #9c9282;
+  --color-ink-500: #5e6b7a;
+  --color-ink-900: #14202e;
+
+  /* ---- Metro lines (map) ---- */
+  --color-line-1: #f9b036; /* sampled */
+  --color-line-2: #68b75d; /* sampled */
+  --color-line-3: #e9511c; /* sampled */
+
+  /* ---- Semantic tokens (use these in components) ---- */
+  --color-bg: var(--color-sand-100);
+  --color-surface: var(--color-white);
+  --color-surface-muted: var(--color-sand-50);
+  --color-border: var(--color-sand-300);
+
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-500);
+  --color-heading: var(--color-navy-500);
+  --color-text-on-primary: var(--color-white);
+  --color-text-on-accent: var(--color-white);
+
+  --color-primary: var(--color-navy-500);
+  --color-primary-hover: var(--color-navy-400);
+  --color-primary-active: var(--color-navy-600);
+  --color-primary-subtle: var(--color-navy-50);
+
+  --color-accent: var(--color-red-500);
+  --color-accent-hover: var(--color-red-600);
+  --color-accent-active: var(--color-red-700);
+  --color-accent-subtle: var(--color-red-50);
+
+  --color-focus-ring: var(--color-red-500);
+
+  /* Route / search visualisation */
+  --color-route-path: var(--color-red-500);
+  --color-route-origin: var(--color-line-2);
+  --color-route-destination: var(--color-red-500);
+  --color-node-visited: var(--color-navy-300);
+  --color-node-frontier: var(--color-line-1);
+}

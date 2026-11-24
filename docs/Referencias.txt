@@ -1,0 +1,72 @@
+REFERENCIAS
+===========
+
+1. LIBRERÍAS EMPLEADAS
+----------------------
+
+1.1. Backend (Python 3.10 o superior)
+
+   - Flask 3.1 (https://flask.palletsprojects.com)
+     Framework web con el que se implementa la API REST: endpoints GET /api/health y
+     POST /api/route, lectura del cuerpo JSON de las peticiones y envío de las respuestas.
+
+   - Flask-CORS 6.0 (https://flask-cors.readthedocs.io)
+     Habilita CORS en la API para que el cliente web, servido desde otro puerto
+     (localhost:3000), pueda hacer peticiones a la API (localhost:8080).
+
+   - python-dotenv 1.2 (https://github.com/theskumar/python-dotenv)
+     Carga la configuración de la API (host, puerto, modo debug) desde el archivo API/.env.
+
+   Biblioteca estándar de Python (https://docs.python.org/3/library/):
+   - heapq: cola de prioridad (lista abierta) del algoritmo A*, ordenada por f(n) = g(n) + h(n).
+   - math: funciones trigonométricas de la fórmula de haversine (distancia en línea recta
+     entre coordenadas, usada en h(n)) y valor infinito para los nodos no alcanzados.
+   - itertools (permutations): creación de las aristas de transbordo entre las líneas de una
+     misma estación.
+   - json y pathlib: lectura del archivo de datos de la red (API/app/data/metro.json).
+   - os: lectura de las variables de entorno de configuración.
+
+1.2. Frontend (Node.js 18 o superior)
+
+   - React 19 y React DOM 19 (https://react.dev)
+     Librería de interfaces con la que se construye la aplicación web: componentes de la
+     vista (selectores de estación, botones, desglose de la ruta) y gestión de su estado.
+
+   - React Scripts 5 / Create React App (https://create-react-app.dev)
+     Herramientas de desarrollo y compilación del cliente: servidor de desarrollo
+     (npm start), empaquetado para producción (npm run build) y carga de variables de
+     entorno desde client/.env.
+
+   - TanStack Charts 1.4 (https://tanstack.com)
+     Dibujo del mapa del metro: vías de cada línea (marcas de línea), estaciones y
+     transbordos (marcas de punto), nombres de las estaciones (marcas de texto) y
+     resaltado de la ruta calculada sobre la red atenuada.
+
+
+2. FUENTES DE DATOS
+-------------------
+
+2.1. Coordenadas geográficas de las estaciones (latitud y longitud)
+   OpenStreetMap,
+   https://www.openstreetmap.org, consultado mediante Overpass API (https://overpass-api.de).
+   Se usó el nodo de parada de cada estación en las relaciones de ruta del Metrorrey.
+   Uso: cálculo de la heurística h(n), distancia en línea recta hasta el destino.
+
+2.2. Longitud de los tramos entre estaciones consecutivas
+   OpenStreetMap, relaciones de ruta del Metrorrey (geometría de las vías), consultadas
+   mediante Overpass API:
+   - Línea 1: https://www.openstreetmap.org/relation/7890222
+              https://www.openstreetmap.org/relation/7890221
+   - Línea 2: https://www.openstreetmap.org/relation/3403903
+              https://www.openstreetmap.org/relation/7890220
+   - Línea 3: https://www.openstreetmap.org/relation/12380644
+              https://www.openstreetmap.org/relation/12380647
+   La longitud de cada tramo es la distancia por la vía entre las paradas de dos estaciones
+   consecutivas, medida sobre esa geometría.
+   Uso: costo real de cada arista del grafo, g(n).
+
+2.3. Plano del Metrorrey
+   Plano del enunciado de la práctica (docs/MapaMetroMonterrey.png).
+   Uso: posición de cada estación en el mapa de la interfaz (coordenadas en píxeles del
+   plano, client/src/shared/data/stations.js), colores de las líneas y de la interfaz, y
+   logotipo de Metrorrey usado como icono de la aplicación.
